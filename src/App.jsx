@@ -1,6 +1,12 @@
+import { Preview, TextArea } from "./components";
+
 const App = () => {
   return (
-    <a href='/'>App</a>
+    <div>
+      <h1>Markdown Previewer</h1>
+      <TextArea />
+      <Preview />
+    </div>
   )
 }
 
