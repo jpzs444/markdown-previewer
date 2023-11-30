@@ -1,9 +1,37 @@
 import $ from 'jquery';
 import { marked } from 'marked';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { expand, compress } from '../assets';
+
+marked.use({
+  breaks: true
+});
 
 const TextArea = () => {
+  const [isCompressed, setIsCompressed] = useState(true);
 
+  const handlePreviewDisplay = (isCompressed) => {
+    if (isCompressed) {
+      $('#preview-component').css('display', 'block');
+    } else {
+      $('#preview-component').css('display', 'none');
+    }
+  }
+
+  // For showing default display value of Preview
+  useEffect(() => {
+    handlePreviewDisplay(isCompressed);
+  }, [isCompressed])
+
+  // For updating display value of Preview
+  const handleOnClick = () => {
+    setIsCompressed(isCompressed => !isCompressed);
+    handlePreviewDisplay(isCompressed);
+  }
+
+  console.log(isCompressed);
+
+  // For showing default markdown on first load
   useEffect(() => {
     const loadDefaultMarkdown = () => {
       const defaultMarkdown = 
@@ -34,7 +62,6 @@ const TextArea = () => {
       "\n![freeCodeCamp Logo](https://cdn.freecodecamp.org/testable-projects-fcc/images/fcc_secondary.svg)" +
       "Coded by [jpzs444](https://github.com/jpzs444/markdown-previewer)"
       
-      
       $('#editor').val(defaultMarkdown);
       $('#preview').html(marked.parse(defaultMarkdown));
     }
@@ -42,17 +69,30 @@ const TextArea = () => {
     loadDefaultMarkdown();
   }, [])
 
+  // For updating Preview when Editor value changes
   const handleOnChange = (event) => {
     $('#preview').html(marked.parse(event.target.value))
     console.log($('#editor').val())
   }
 
   return (
-    <div>
-      <label htmlFor="editor">Editor</label>
+    <div id='editor-component'>
+      <div className='toolbar'>
+        <label htmlFor='editor'>Editor</label>
+        <button 
+          type='button' 
+          className='toolbar__button'
+          onClick={handleOnClick}
+        >
+          <img 
+            src={isCompressed ? expand : compress}
+            className='toolbar__button__img'
+          />
+        </button>
+      </div>
       <textarea 
-        id="editor" 
-        name="editor" 
+        id='editor' 
+        name='editor' 
         rows={9} 
         onChange={handleOnChange}
       ></textarea>
