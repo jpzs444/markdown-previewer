@@ -1,0 +1,30 @@
+@use './breakpoints' as u;
+
+@mixin component {
+  padding: 1rem;
+  min-height: 46vh;
+  background-color: #fcfcfc;
+  outline: 1px solid transparent;
+  border-radius: 0.75rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+  @include u.min-breakpoint(u.$md) {
+    height: 96vh;
+    width: 46vw;
+  }
+
+  @include u.min-breakpoint(u.$xl) {
+    max-height: 50rem;
+  }
+}
+
+@mixin scrollbar {
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #b8b8b8;
+    border-radius: 50px;
+  }
+}

@@ -2,10 +2,11 @@ import { Preview, TextArea } from "./components";
 
 const App = () => {
   return (
-    <div>
-      <h1>Markdown Previewer</h1>
-      <TextArea />
-      <Preview />
+    <div className="app">
+      <div className="app__container">
+        <TextArea />
+        <Preview />
+      </div>
     </div>
   )
 }

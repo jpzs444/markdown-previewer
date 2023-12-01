@@ -1,28 +1,52 @@
+@use '../util/' as u;
+
 .preview-title {
   margin-bottom: 0;
 }
 
 #preview {
-  overflow: hidden;
-  padding: 8px;
-  outline: 1px solid black;
+  height: 95.5%;
+  padding: 0.5rem;
+  overflow: hidden auto;
 
-  blockquote {
-    box-shadow: -2px 0px 0px 0px black;
-    padding-left: 5px;
-    margin-left: 35px;
+  &-component {
+    @include u.component;
+    padding-bottom: 0.5rem;
+    overflow: hidden;
   }
+
+  @include u.scrollbar;
   
   table,
   th,
   td {
-    border: 1px solid;
-    border-collapse: collapse;
     padding: 3px;
     font-size: 14px;
+    border: 1px solid;
+    border-collapse: collapse;
+  }
+
+  pre {
+    padding: 0.5rem;
+  }
+
+  pre,
+  code {
+    background-color: #f1f1f1;
+    font-size: 0.875rem;
+  }
+
+  blockquote {
+    box-shadow: -2px 0px 0px 0px #000000;
+    padding-left: 5px;
+    margin-left: 35px;
   }
 
   img {
     width: 100%;
+  }
+
+  a {
+    color: rgb(29, 16, 126);
   }
 }

@@ -1,3 +1,27 @@
 @forward 'globals';
 @forward 'util';
 @forward 'components';
+
+@use './util/' as u;
+
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    min-height: 100vh;
+    max-width: 90rem;
+    
+    @include u.min-breakpoint(u.$md) {
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

@@ -1,20 +1,50 @@
+@use '../util/' as u;
+
 #editor {
+  flex: 1;
   width: 100%;
-  resize: vertical;
+  padding: 0.75rem;
+  font-size: 0.875rem;
+  font-family: monospace;
+  color: #555555;
+  background-color: #eeeeee;
+  border: none;
+  border-radius: 0.25rem;
+  resize: none;
+
+  &-component {
+    @include u.component;
+    flex-direction: column;
+  }
+  
+  @include u.scrollbar;
 }
 
 .toolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
 
   &__button {
-    padding: 0;
-    border: none;
     display: flex;
+    padding: 0;
+    background-color: transparent;
+    border: none;
 
     &__img {
-      width: 16px;
+      width: 1.25rem;
       cursor: pointer;
     }
   }

@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import { marked } from 'marked';
 import { useState, useEffect } from 'react';
-import { expand, compress } from '../assets';
+import { expand, compress, editor } from '../assets';
 
 marked.use({
   breaks: true
@@ -78,7 +78,10 @@ const TextArea = () => {
   return (
     <div id='editor-component'>
       <div className='toolbar'>
-        <label htmlFor='editor'>Editor</label>
+        <div className='toolbar__title'>
+          <img src={editor} width={16}/>
+          <label htmlFor='editor'>Editor</label>
+        </div>
         <button 
           type='button' 
           className='toolbar__button'
@@ -93,7 +96,6 @@ const TextArea = () => {
       <textarea 
         id='editor' 
         name='editor' 
-        rows={9} 
         onChange={handleOnChange}
       ></textarea>
     </div>
